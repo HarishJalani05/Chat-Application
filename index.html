@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <h2>💬 Real-time Chat App</h2>
+
+    <div class="username-box">
+      <input id="username" placeholder="Enter your name..." />
+      <button onclick="setUsername()">Join Chat</button>
+    </div>
+
+    <ul id="messages"></ul>
+
+    <form id="form" style="display: none;">
+      <input id="input" autocomplete="off" placeholder="Type a message..." />
+      <button>Send</button>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    let username = "";
+
+    function setUsername() {
+      const inputName = document.getElementById('username').value.trim();
+      if (!inputName) return alert("Please enter a name.");
+      username = inputName;
+      socket.emit('set username', username);
+
+      document.querySelector('.username-box').style.display = 'none';
+      document.getElementById('form').style.display = 'flex';
+    }
+
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value) {
+        socket.emit('chat message', { user: username, text: input.value });
+        input.value = '';
+      }
+    });
+
+    socket.on('chat message', function(data) {
+      const item = document.createElement('li');
+      item.innerHTML = `<strong style="color:${getColor(data.user)}">👤 ${data.user}:</strong> ${data.text}`;
+      messages.appendChild(item);
+      messages.scrollTop = messages.scrollHeight;
+    });
+
+    function getColor(name) {
+      const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return colors[Math.abs(hash) % colors.length];
+    }
+  </script>
+</body>
+</html>

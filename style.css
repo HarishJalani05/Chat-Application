@@ -1,0 +1,19 @@
+.username-box {
+  margin-bottom: 15px;
+}
+
+.username-box input {
+  padding: 10px;
+  width: 60%;
+  border: none;
+  border-radius: 5px;
+}
+
+.username-box button {
+  padding: 10px;
+  border: none;
+  background: #1abc9c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
