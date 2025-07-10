@@ -19,3 +19,6 @@ The project titled "Real-Time Chat Application using Socket.IO" focused on build
 The development environment for this project was Visual Studio Code (VS Code), a lightweight yet powerful editor well-suited for full-stack JavaScript development. Socket.IO was initialized on both the server (server.js) and the client-side JavaScript, enabling event-based communication like message, user connected, and user disconnected. Additional features like dynamic color coding or labeling messages with usernames helped identify the sender, making the chat experience more personalized and user-friendly.
 
 This real-time chat application has numerous practical applications in everyday life. It serves as the foundational concept behind messaging platforms such as WhatsApp Web, Discord, or Slack. Beyond casual conversations, such real-time communication tools are crucial in customer support chatbots, collaborative teamwork platforms, live Q&A sessions, or even multiplayer gaming environments. By working on this project, I gained a solid understanding of WebSockets, server-client architecture, and asynchronous event handling, all of which are key components in modern web development
+
+*OUTPUT*:
+<img width="1917" height="912" alt="Image" src="https://github.com/user-attachments/assets/e192ccda-bc7c-4602-81aa-a9193634f7e0" />
